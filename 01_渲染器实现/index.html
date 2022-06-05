@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="./renderer.js"></script>
+  <script>
+    // 通过h函数来创建一个vnode
+    const vnode = h('div', { class: "header", id: "id" }, [
+      h('span', null, "span"),
+      h('li', null, "li"),
+      h('button', { "onClick": function () { console.log('1') } }, "+1")
+    ])
+
+    // console.log(vnode)
+    // 通过mount函数，将vnode挂载在div#app上
+    mount(vnode, document.querySelector('#app'))
+
+    const vnode2 = h('div', { class: "why" }, [
+      h('span', null, "span"),
+      h('button', { "onClick": function () { console.log('2') } }, "-1")
+    ])
+
+    patch(vnode, vnode2)
+  </script>
+
+</body>
+
+
+</html>
